@@ -175,3 +175,5 @@ DATABASES = {
         'PORT': config("DB_PORT"),
     }
 }
+
+GOOGLE_CLIENT_ID=config('GOOGLE_CLIENT_ID')
