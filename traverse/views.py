@@ -5,6 +5,7 @@ from rest_framework.permissions import AllowAny,IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.parsers import FormParser,MultiPartParser
 from .utils import generate_room_code
+from django.db.models import Q
 # Create your views here.
 
 class ShareFileCreateView(generics.CreateAPIView):
@@ -97,7 +98,7 @@ class RoomListView(generics.ListAPIView):
     serializer_class=RoomSerializer
 
     def get_queryset(self):
-        return Room.objects.filter(participants=self.request.user)
+        return Room.objects.filter(Q(participants=self.request.user) | Q(created_by=self.request.user))
 
     def list(self, request, *args, **kwargs):
         queryset=self.get_queryset()
@@ -115,7 +116,7 @@ class RoomListView(generics.ListAPIView):
             'error':False,
             'message':'Room Listed',
             'data':serialzier.data
-        })         
+        },status=status.HTTP_200_OK)
 
 # class RoomJoinView(generics.GenericAPIView):
 #     permission_classes=[AllowAny]

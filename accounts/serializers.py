@@ -36,3 +36,10 @@ class ProfileUpdateSerializer(serializers.ModelSerializer):
         fields=[
             'id','full_name','profile_picture'
         ]        
+
+class UserDropdownSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=User
+        fields=[
+            'id','full_name'
+        ]        

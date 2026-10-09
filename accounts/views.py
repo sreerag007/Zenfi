@@ -7,6 +7,7 @@ from rest_framework import status
 from drf_spectacular.utils import extend_schema, OpenApiTypes
 from .utils import get_user_tokens
 from rest_framework.parsers import FormParser,MultiPartParser
+from rest_framework import generics
 # Create your views here.
 
 class GoogleAuthView(APIView):
@@ -132,3 +133,19 @@ class CheckUserSessionView(APIView):
             }
         },status=status.HTTP_200_OK)   
 
+class UserDropDownView(generics.ListAPIView):
+    permission_classes=[IsAuthenticated]
+    serializer_class=UserDropdownSerializer
+
+    def get_queryset(self):
+        return User.objects.all().exclude(pk=self.request.user.pk)
+
+    def list(self, request, *args, **kwargs):
+        queryset=self.get_queryset()
+        serializer=self.get_serializer(queryset,many=True)
+
+        return Response({
+            'error':False,
+            'message':'User Listed',
+            'data':serializer.data
+        },status=status.HTTP_200_OK)

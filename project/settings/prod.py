@@ -6,7 +6,7 @@ DEBUG=config("DEBUG")
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-ALLOWED_HOSTS=['api.energitek.us', 'www.energitek.us']
+ALLOWED_HOSTS=['*']
 
 SECRET_KEY = config("SECRET_KEY")
 
