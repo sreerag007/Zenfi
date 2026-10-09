@@ -39,3 +39,10 @@ DATABASES={
 				
     }
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://zenfi-production.up.railway.app',
+    'https://zenfi-production-560a.up.railway.app',
+]
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
