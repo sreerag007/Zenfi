@@ -12,11 +12,11 @@ venv/
 
 media/
 
-accounts/migrations/*.py
-!accounts/migrations/__init__.py
+# accounts/migrations/*.py
+# !accounts/migrations/__init__.py
 
-traverse/migrations/*.py
-!traverse/migrations/__init__.py
+# traverse/migrations/*.py
+# !traverse/migrations/__init__.py
 
 staticfiles/
 
