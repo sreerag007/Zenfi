@@ -17,7 +17,7 @@ from channels.auth import AuthMiddlewareStack
 if sys.platform == "win32":
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings.dev')
 
 django_asgi_app = get_asgi_application()
 

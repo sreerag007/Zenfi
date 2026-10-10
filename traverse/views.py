@@ -6,8 +6,25 @@ from rest_framework.response import Response
 from rest_framework.parsers import FormParser,MultiPartParser
 from .utils import generate_room_code
 from django.db.models import Q
+from drf_spectacular.utils import extend_schema
+
 # Create your views here.
 
+@extend_schema(
+    request={
+        'multipart/form-data': {
+            'type': 'object',
+            'properties': {
+                'room_code': {'type': 'string'},
+                'text_msg': {'type': 'string'},
+                'files': {
+                    'type': 'array',
+                    'items': {'type': 'string', 'format': 'binary'},
+                },
+            },
+        }
+    }
+)
 class ShareFileCreateView(generics.CreateAPIView):
     serializer_class=ShareCreateSerializer
     permission_classes=[IsAuthenticated]
@@ -26,7 +43,7 @@ class ShareFileCreateView(generics.CreateAPIView):
 
 class ShareFileListView(generics.ListAPIView):
     permission_classes=[IsAuthenticated]
-    serializer_class=ShareFileSerializer
+    serializer_class=ShareSerializer
 
     def get_queryset(self):
         return Share.objects.filter(room__participants=self.request.user)

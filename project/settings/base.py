@@ -96,16 +96,6 @@ WSGI_APPLICATION = 'project.wsgi.application'
 #     }
 # }
 
-SWAGGER_SETTINGS={
-    'SECURITY_DEFINITIONS':{
-        'Token':{
-            'type':'apiKey',
-            'name':'Authorization',
-            'in':'header'
-        }
-    }
-}
-
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Traverse',
     'DESCRIPTION': 'Your project description',
@@ -113,7 +103,10 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     'SWAGGER_UI_DIST': 'SIDECAR',
     'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
-    'REDOC_DIST': 'SIDECAR',    
+    'REDOC_DIST': 'SIDECAR', 
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': False,
+    }  
     # OTHER SETTINGS
 }
 

@@ -118,6 +118,7 @@ class ProfileUpdateView(APIView):
 
 class CheckUserSessionView(APIView):
     permission_classes=[IsAuthenticated]
+    serializer_class=serializers.Serializer
 
     def get(self,request):
         user=request.user
