@@ -17,3 +17,15 @@ jobs:
       - run: pip install -r requirements.txt
       - run: pip install flake8
       - run: flake8 .
+      - name: Run tests
+        env:
+          SECRET_KEY: dummy-secret-key-for-ci
+          DEBUG: "True"
+          DB_ENGINE: django.db.backends.sqlite3
+          DB_NAME: ":memory:"
+          DB_USER: dummy
+          DB_PASSWORD: dummy
+          DB_HOST: localhost
+          DB_PORT: "5432"
+          GOOGLE_CLIENT_ID: dummy-client-id
+        run: python manage.py test
