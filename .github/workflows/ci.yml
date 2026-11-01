@@ -17,3 +17,4 @@ jobs:
       - run: pip install -r requirements.txt
       - run: pip install flake8
       - run: flake8 .
+      - run: python manage.py test
