@@ -7,11 +7,13 @@ For more information on this file, see
 https://docs.djangoproject.com/en/6.0/howto/deployment/asgi/
 """
 
+from traverse import routing
 import os
-import sys,asyncio
+import sys
+import asyncio
 
 from django.core.asgi import get_asgi_application
-from channels.routing import ProtocolTypeRouter,URLRouter
+from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
 
 if sys.platform == "win32":
@@ -21,11 +23,10 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'project.settings.dev')
 
 django_asgi_app = get_asgi_application()
 
-from traverse import routing
 
-application=ProtocolTypeRouter({
-    "http":django_asgi_app,
-    "websocket":AuthMiddlewareStack(
+application = ProtocolTypeRouter({
+    "http": django_asgi_app,
+    "websocket": AuthMiddlewareStack(
         URLRouter(routing.websocket_urlpatterns)
-        ),
+    ),
 })

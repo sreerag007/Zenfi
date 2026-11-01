@@ -3,6 +3,8 @@ name: CI
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]  
 
 jobs:
   test:
@@ -13,4 +15,5 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install -r requirements.txt
+      - run: pip install flake8
       - run: flake8 .

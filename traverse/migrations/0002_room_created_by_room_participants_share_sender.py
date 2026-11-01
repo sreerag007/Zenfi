@@ -16,18 +16,27 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='room',
             name='created_by',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, related_name='created_rooms', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                default=None,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='created_rooms',
+                to=settings.AUTH_USER_MODEL),
             preserve_default=False,
         ),
         migrations.AddField(
             model_name='room',
             name='participants',
-            field=models.ManyToManyField(related_name='rooms', to=settings.AUTH_USER_MODEL),
+            field=models.ManyToManyField(
+                related_name='rooms', to=settings.AUTH_USER_MODEL),
         ),
         migrations.AddField(
             model_name='share',
             name='sender',
-            field=models.ForeignKey(default=None, on_delete=django.db.models.deletion.CASCADE, related_name='shares', to=settings.AUTH_USER_MODEL),
+            field=models.ForeignKey(
+                default=None,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name='shares',
+                to=settings.AUTH_USER_MODEL),
             preserve_default=False,
         ),
     ]
