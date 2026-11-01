@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Room',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('room_code', models.CharField(max_length=8, unique=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
@@ -24,19 +25,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Share',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('text_msg', models.TextField(blank=True, max_length=25000, null=True)),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
+                ('text_msg', models.TextField(
+                    blank=True, max_length=25000, null=True)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('room', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='shares', to='traverse.room')),
+                ('room',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                   related_name='shares',
+                                   to='traverse.room')),
             ],
         ),
         migrations.CreateModel(
             name='ShareFile',
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('id', models.BigAutoField(auto_created=True,
+                 primary_key=True, serialize=False, verbose_name='ID')),
                 ('file', models.FileField(blank=True, null=True, upload_to='pictures')),
-                ('share', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='files', to='traverse.share')),
+                ('share',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
+                                   related_name='files',
+                                   to='traverse.share')),
             ],
         ),
     ]

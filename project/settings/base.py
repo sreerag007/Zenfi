@@ -5,12 +5,12 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY=config('SECRET_KEY')
+SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config("DEBUG")
 
 ALLOWED_HOSTS = []
-AUTH_USER_MODEL='accounts.User'
+AUTH_USER_MODEL = 'accounts.User'
 
 
 # Application definition
@@ -47,7 +47,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'project.urls'
 
-ASGI_APPLICATION='project.asgi.application'
+ASGI_APPLICATION = 'project.asgi.application'
 
 CHANNEL_LAYERS = {
     'default': {
@@ -73,17 +73,16 @@ TEMPLATES = [
     },
 ]
 
-REST_FRAMEWORK={
+REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 100 ,
-    'DEFAULT_AUTHENTICATION_CLASSES':[
+    'PAGE_SIZE': 100,
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-          ],   
+    ],
 }
 
 WSGI_APPLICATION = 'project.wsgi.application'
-
 
 
 # Database
@@ -103,10 +102,10 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     'SWAGGER_UI_DIST': 'SIDECAR',
     'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
-    'REDOC_DIST': 'SIDECAR', 
+    'REDOC_DIST': 'SIDECAR',
     'SWAGGER_UI_SETTINGS': {
         'deepLinking': False,
-    }  
+    }
     # OTHER SETTINGS
 }
 
@@ -142,8 +141,8 @@ USE_I18N = True
 USE_TZ = True
 
 
-MEDIA_URL='/media/'
-MEDIA_ROOT=BASE_DIR/ 'media'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 STATIC_URL = 'static/'
@@ -169,9 +168,9 @@ DATABASES = {
     }
 }
 
-GOOGLE_CLIENT_ID=config('GOOGLE_CLIENT_ID')
+GOOGLE_CLIENT_ID = config('GOOGLE_CLIENT_ID')
 
-REDIS_URL=os.environ.get("REDIS_URL", "redis://127.0.0.1:6379")
+REDIS_URL = os.environ.get("REDIS_URL", "redis://127.0.0.1:6379")
 
 CHANNEL_LAYERS = {
     "default": {

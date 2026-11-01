@@ -6,4 +6,4 @@ class TraverseConfig(AppConfig):
     name = 'traverse'
 
     def ready(self):
-        import traverse.signals   
+        import traverse.signals
